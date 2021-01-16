@@ -1,70 +1,32 @@
-import React, { useEffect } from 'react';
-import Head from 'next/head';
-import { NextPage, GetStaticProps } from 'next';
-import {
-  FeeData,
-  getFeeData,
-  getUniswapV1Data,
-  getUniswapV2Data,
-  getSushiswapData,
-} from 'data/feeData';
-import { getBalancerData } from 'data/balancer';
-import { getCurveData } from 'data/curve';
-import { getOmenData } from 'data/omen';
-import { get0xData } from 'data/zerox';
-import { getRenData } from 'data/ren';
-import { getSynthetixData } from 'data/synthetix';
-import { getPolymarketData } from 'data/polymarket';
-import { getPolkadotData, getKusamaData } from 'data/polkadot';
-import { getTornadoData } from 'data/tornado';
-import List from 'components/List';
-import ReactGA from 'react-ga';
+import React from 'react'
+import Head from 'next/head'
+import { NextPage, GetStaticProps } from 'next'
+import { FeeData, getL1FeeData } from 'data/coinmetrics'
+import List from 'components/List'
 
 interface HomeProps {
-  data: FeeData[];
+  data: FeeData[]
 }
 
-const ASSETS = [
-  'eth',
-  'btc',
-  'ltc',
-  'ada',
-  'xtz',
-  'bsv',
-  'bch',
-  'xrp',
-  'doge',
-  'xmr',
-  'xlm',
-  'bnb_mainnet',
-];
-
-ReactGA.initialize('UA-150445352-3');
-
 export const Home: NextPage<HomeProps> = ({ data }) => {
-  useEffect(() => {
-    ReactGA.set({ page: window.location.pathname });
-    ReactGA.pageview(window.location.pathname);
-  }, []);
-
   return (
     <div className="container">
       <Head>
-        <title>Crypto Fees</title>
+        <title>Money Printer</title>
         <link rel="icon" href="/favicon.png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap"
           rel="stylesheet"
         />
 
-        <meta property="og:title" content="Crypto Fees" />
+        <meta property="og:title" content="Money Printer" />
         <meta property="og:image" content="https://cryptofees.info/api/screenshot" />
         <meta
           property="og:description"
           content="There's tons of crypto projects. Which ones are people actually paying to use?"
         />
 
-        <meta name="twitter:title" content="Crypto Fees" />
+        <meta name="twitter:title" content="Money Printer" />
         <meta
           name="twitter:description"
           content="There's tons of crypto projects. Which ones are people actually paying to use?"
@@ -77,7 +39,7 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
       </Head>
 
       <main>
-        <h1 className="title">Crypto Fees</h1>
+        <h1 className="title">Money Printer</h1>
 
         <p className="description">
           There&apos;s tons of crypto projects.
@@ -215,29 +177,16 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const handleFailure = (e: any) => {
-    console.warn(e);
-    return null;
-  };
+  // const handleFailure = (e: any) => {
+  //   console.warn(e);
+  //   return null;
+  // };
 
-  const [assetData, ...appData] = await Promise.all([
-    Promise.all(ASSETS.map(getFeeData)).catch(handleFailure),
-    getUniswapV1Data().catch(handleFailure),
-    getUniswapV2Data().catch(handleFailure),
-    getBalancerData().catch(handleFailure),
-    get0xData().catch(handleFailure),
-    getCurveData().catch(handleFailure),
-    getKusamaData().catch(handleFailure),
-    getOmenData().catch(handleFailure),
-    getPolymarketData().catch(handleFailure),
-    getPolkadotData().catch(handleFailure),
-    getRenData().catch(handleFailure),
-    getSushiswapData().catch(handleFailure),
-    getSynthetixData().catch(handleFailure),
-    getTornadoData().catch(handleFailure),
+  const [l1Data, ...appData] = await Promise.all([
+    getL1FeeData(),
   ]);
 
-  const data = [...assetData, ...appData].filter((val: any) => !!val);
+  const data = [...l1Data, ...appData].filter((val: any) => !!val);
 
   return { props: { data }, revalidate: 60 };
 };
