@@ -1,11 +1,13 @@
 import React from 'react'
 import Head from 'next/head'
 import { NextPage, GetStaticProps } from 'next'
-import { FeeData, getL1FeeData } from 'data/coinmetrics'
+import { getL1FeeData } from 'data/coinmetrics'
+import { getDeFiIssuanceData, getAaveIssuanceData } from 'data/eth-defi'
+import { IssuanceData } from 'data/types'
 import List from 'components/List'
 
 interface HomeProps {
-  data: FeeData[]
+  data: IssuanceData[]
 }
 
 export const Home: NextPage<HomeProps> = ({ data }) => {
@@ -42,9 +44,7 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
         <h1 className="title">Money Printer</h1>
 
         <p className="description">
-          There&apos;s tons of crypto projects.
-          <br />
-          Which ones are people actually paying to use?
+          How much money are crypto protocols printing to subsidize their network?
         </p>
 
         <p>
@@ -182,11 +182,13 @@ export const getStaticProps: GetStaticProps = async () => {
   //   return null;
   // };
 
-  const [l1Data, ...appData] = await Promise.all([
+  const [l1Data, defiData, ...other] = await Promise.all([
     getL1FeeData(),
+    getDeFiIssuanceData(),
+    getAaveIssuanceData(),
   ]);
 
-  const data = [...l1Data, ...appData].filter((val: any) => !!val);
+  const data = [...l1Data, ...defiData, ...other].filter((val: any) => !!val);
 
   return { props: { data }, revalidate: 60 };
 };

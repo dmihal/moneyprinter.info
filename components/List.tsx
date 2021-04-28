@@ -6,23 +6,20 @@ interface ListProps {
   data: FeeData[]
 }
 
-const sortByDaily = (a: FeeData, b: FeeData) => b.oneDay - a.oneDay
+// const sortByDaily = (a: FeeData, b: FeeData) => b.oneDay - a.oneDay
 const sortByWeekly = (a: FeeData, b: FeeData) => b.sevenDayMA - a.sevenDayMA
 
 const List: React.FC<ListProps> = ({ data }) => {
-  const [sort, setSort] = useState('daily')
+  const [sort, setSort] = useState('weekly')
 
-  const sortedData = data.sort(sort === 'weekly' ? sortByWeekly : sortByDaily)
+  const sortedData = data.sort(sortByWeekly)
 
   return (
     <div className="list">
       <div className="header">
         <div className="name">Name</div>
-        <div className="amount" onClick={() => setSort('daily')}>
-          {sort === 'daily' && '▼'} 1 Day (USD)
-        </div>
-        <div className="amount" onClick={() => setSort('weekly')}>
-          {sort === 'weekly' && '▼'} 7 Day Avg. (USD)
+        <div className="amount">
+          7 Day Avg. (USD)
         </div>
       </div>
 
@@ -35,12 +32,6 @@ const List: React.FC<ListProps> = ({ data }) => {
           }}
         >
           <div className="name">{protocol.name}</div>
-          <div className="amount">
-            {protocol.oneDay.toLocaleString('en-US', {
-              style: 'currency',
-              currency: 'USD',
-            })}
-          </div>
           <div className="amount">
             {protocol.sevenDayMA.toLocaleString('en-US', {
               style: 'currency',

@@ -1,12 +1,4 @@
-type Category = 'l1' | 'app' | 'l2';
-
-export interface FeeData {
-  id: string;
-  name?: string;
-  category: Category;
-  sevenDayMA: number;
-  oneDay: number;
-}
+import { IssuanceData } from './types'
 
 const currencies = [
   ['eth', 'Ethereum'],
@@ -21,7 +13,7 @@ const currencies = [
 export const getL1FeeData = () => Promise.all(currencies.map(([id, name]) => getFeeData(id, name)))
 
 // TODO: add IssTotNtv
-async function getFeeData(id: string, name: string): Promise<FeeData> {
+async function getFeeData(id: string, name: string): Promise<IssuanceData> {
   const startDate = new Date(Date.now() - 86400 * 1000 * 7);
   const startDateString = `${startDate.getFullYear()}-${(startDate.getMonth() + 1)
     .toString()
