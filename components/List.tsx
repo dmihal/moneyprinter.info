@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { FeeData } from 'data/coinmetrics'
+import React from 'react'
+import { IssuanceData } from 'data/types'
 // import icons from './icons'
 
 interface ListProps {
-  data: FeeData[]
+  data: IssuanceData[]
 }
 
-// const sortByDaily = (a: FeeData, b: FeeData) => b.oneDay - a.oneDay
-const sortByWeekly = (a: FeeData, b: FeeData) => b.sevenDayMA - a.sevenDayMA
+// const sortByDaily = (a: IssuanceData, b: IssuanceData) => b.oneDay - a.oneDay
+const sortByWeekly = (a: IssuanceData, b: IssuanceData) => b.sevenDayMA - a.sevenDayMA
 
 const List: React.FC<ListProps> = ({ data }) => {
-  const [sort, setSort] = useState('weekly')
+  // const [sort, setSort] = useState('weekly')
 
   const sortedData = data.sort(sortByWeekly)
 
@@ -23,7 +23,7 @@ const List: React.FC<ListProps> = ({ data }) => {
         </div>
       </div>
 
-      {sortedData.map((protocol: FeeData) => (
+      {sortedData.map((protocol: IssuanceData) => (
         <div
           className={`item ${protocol.category}`}
           key={protocol.id}

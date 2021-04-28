@@ -1,4 +1,4 @@
-import { Contract, Provider } from 'ethers-multicall'
+// import { Contract, Provider } from 'ethers-multicall'
 import { ethers } from 'ethers'
 import { date2block } from 'date2block'
 
@@ -13,7 +13,9 @@ today.setUTCHours(0)
 today.setUTCMinutes(0)
 today.setUTCSeconds(0)
 
+// @ts-ignore
 const yesterday = new Date(today - ONE_DAY)
+// @ts-ignore
 const weekAgo = new Date(today - (ONE_DAY * 7))
 
 const todayBlock = date2block(today)
@@ -34,12 +36,3 @@ export async function getSupply(address: string) {
   return { todaySupply, yesterdaySupply, weekAgoSupply }
 }
 
-export async function getBalance(token: string, holder: string) {
-  const contract = new ethers.Contract(address, erc20Abi, provider)
-
-  const todaySupply = await contract.totalSupply({ blockTag: todayBlock })
-  const yesterdaySupply = await contract.totalSupply({ blockTag: yesterdayBlock })
-  const weekAgoSupply = await contract.totalSupply({ blockTag: weekAgoBlock })
-
-  return { todaySupply, yesterdaySupply, weekAgoSupply }
-}

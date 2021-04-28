@@ -44,8 +44,8 @@ const protocols: any[] = [
   // 0xb93b505ed567982e2b6756177ddd23ab5745f309
 ]
 
-export function getDeFiIssuanceData(): Promise<IssuanceData> {
-  return Promise.all(protocols.map(async (protocol: any) => {
+export async function getDeFiIssuanceData(): Promise<IssuanceData[]> {
+  return Promise.all(protocols.map(async (protocol: any): Promise<IssuanceData> => {
     const price = await getPriceFromAddress(protocol.token)
     const { todaySupply, weekAgoSupply } = await getSupply(protocol.token)
     console.log(todaySupply.toString(), weekAgoSupply.toString())
@@ -61,7 +61,7 @@ export function getDeFiIssuanceData(): Promise<IssuanceData> {
       sevenDayMA,
       oneDay,
     }
-  }))
+  }));
 }
 
 export async function getAaveIssuanceData(): Promise<IssuanceData> {
