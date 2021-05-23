@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import { NextPage, GetStaticProps } from 'next'
-import { getL1FeeData } from 'data/coinmetrics'
+import { getL1FeeData, getCardanoData } from 'data/coinmetrics'
 import { getDeFiIssuanceData, getAaveIssuanceData } from 'data/eth-defi'
 import { IssuanceData } from 'data/types'
 import List from 'components/List'
@@ -186,6 +186,7 @@ export const getStaticProps: GetStaticProps = async () => {
     getL1FeeData(),
     getDeFiIssuanceData(),
     getAaveIssuanceData(),
+    getCardanoData(),
   ]);
 
   const data = [...l1Data, ...defiData, ...other].filter((val: any) => !!val);
