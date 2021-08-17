@@ -3,6 +3,7 @@ import { Context } from '@cryptostats/sdk';
 const currencies = [
   ['eth', 'Ethereum', 'QmedJLPy6R7x3dDEy2cfMd8gXbZm9e3vxvgBLXp3YZEHCy'],
   ['btc', 'Bitcoin', 'QmerwCGnYE4DE9oe4a6hppgKRz2vvMdx1AuwvgFLgrdeh7'],
+  ['dot', 'Polkadot', 'Qmc2A56wLVhqcxeKC3ueje88d9YhEBWgiNXAz32to8yu5g'],
   ['ltc', 'Litecoin', 'QmQfWmmsfGDsVfgkjMwneB9MRgg8SEumgM7ZaGSP98ZsgW'],
   ['bch', 'Bitcoin Cash', 'QmT1RaaEdJiJnyGMWLpHxamk3mhjrqoodAkjpD2wCxHeyS'],
   ['doge', 'Dogecoin', 'QmRpogZjZEKLX33245zT6QSiDENMb26fS922Ds6pp3VzE3'],
