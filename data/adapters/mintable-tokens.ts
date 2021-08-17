@@ -25,13 +25,6 @@ const tokens: Token[] = [
     icon: 'QmYPqFXTqYcynD5hT9sZbsoPZXbvjSfL7WWQPL7EwYAyE5',
   },
   {
-    id: 'compound',
-    name: 'Compound',
-    token: '0xc00e94cb662c3520282e6f5717214004a7f26888',
-    coinGeckoId: 'compound-governance-token',
-    icon: 'QmZpZsg829EnBxE2MPZykZpAfsxyRsu6EuGbtfTkf2EFNj',
-  },
-  {
     id: 'curve',
     name: 'Curve',
     token: '0xd533a949740bb3306d119cc777fa900ba034cd52',
@@ -60,8 +53,6 @@ export async function setup(sdk: Context) {
       tokenContract.totalSupply({ blockTag: today }),
       tokenContract.totalSupply({ blockTag: weekAgo }),
     ])
-
-    console.log(todaySupply.toString(), weekAgoSupply.toString())
 
     const oneWeekIssuance = todaySupply.sub(weekAgoSupply)
 
