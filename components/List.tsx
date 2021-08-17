@@ -1,17 +1,12 @@
 import React from 'react'
-import { IssuanceData } from 'data/types'
-// import icons from './icons'
 
 interface ListProps {
-  data: IssuanceData[]
+  data: any[]
 }
 
-// const sortByDaily = (a: IssuanceData, b: IssuanceData) => b.oneDay - a.oneDay
-const sortByWeekly = (a: IssuanceData, b: IssuanceData) => b.sevenDayMA - a.sevenDayMA
+const sortByWeekly = (a: any, b: any) => b.results.issuance7DayAvg - a.results.issuance7DayAvg
 
 const List: React.FC<ListProps> = ({ data }) => {
-  // const [sort, setSort] = useState('weekly')
-
   const sortedData = data.sort(sortByWeekly)
 
   return (
@@ -19,21 +14,21 @@ const List: React.FC<ListProps> = ({ data }) => {
       <div className="header">
         <div className="name">Name</div>
         <div className="amount">
-          7 Day Avg. (USD)
+          Daily issuance (USD, 7 day avg)
         </div>
       </div>
 
-      {sortedData.map((protocol: IssuanceData) => (
+      {sortedData.map((protocol: any) => (
         <div
-          className={`item ${protocol.category}`}
+          className={`item ${protocol.metadata.category}`}
           key={protocol.id}
           style={{
-            backgroundImage: /*icons[protocol.id] ? `url('${icons[protocol.id]}')` :*/ undefined,
+            backgroundImage: protocol.metadata.icon ? `url('${protocol.metadata.icon}')` : undefined,
           }}
         >
-          <div className="name">{protocol.name}</div>
+          <div className="name">{protocol.metadata.name}</div>
           <div className="amount">
-            {protocol.sevenDayMA.toLocaleString('en-US', {
+            {protocol.results.issuance7DayAvg.toLocaleString('en-US', {
               style: 'currency',
               currency: 'USD',
             })}

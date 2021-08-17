@@ -1,13 +1,12 @@
 import React from 'react'
 import Head from 'next/head'
 import { NextPage, GetStaticProps } from 'next'
-import { getL1FeeData, getCardanoData } from 'data/coinmetrics'
-import { getDeFiIssuanceData, getAaveIssuanceData } from 'data/eth-defi'
-import { IssuanceData } from 'data/types'
+import 'data/adapters'
+import sdk from 'data/sdk'
 import List from 'components/List'
 
 interface HomeProps {
-  data: IssuanceData[]
+  data: any[]
 }
 
 export const Home: NextPage<HomeProps> = ({ data }) => {
@@ -177,20 +176,9 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const handleFailure = (e: any) => {
-  //   console.warn(e);
-  //   return null;
-  // };
-
-  const [l1Data, defiData, ...other] = await Promise.all([
-    getL1FeeData(),
-    getDeFiIssuanceData(),
-    getAaveIssuanceData(),
-    getCardanoData(),
-  ]);
-
-  const data = [...l1Data, ...defiData, ...other].filter((val: any) => !!val);
-
+  const list = sdk.getList('issuance')
+  const data = await list.executeQueriesWithMetadata(['issuance7DayAvg'])
+console.log(list)
   return { props: { data }, revalidate: 60 };
 };
 
