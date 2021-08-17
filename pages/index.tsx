@@ -178,7 +178,7 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const list = sdk.getList('issuance')
   const data = await list.executeQueriesWithMetadata(['issuance7DayAvg'])
-console.log(list)
+
   return { props: { data }, revalidate: 60 };
 };
 
