@@ -6,7 +6,7 @@ if (!process.env.MORALIS_KEY) {
 
 const sdk = new CryptoStatsSDK({
   moralisKey: process.env.MORALIS_KEY,
-  adapterListSubgraph: 'dmihal/stateless-list-registry-kovan-staging',
+  adapterListSubgraph: 'dmihal/cryptostats-adapter-registry-test',
 })
 
 export default sdk
