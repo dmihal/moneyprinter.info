@@ -8,7 +8,7 @@
     "type-check": "tsc"
   },
   "dependencies": {
-    "@cryptostats/sdk": "^0.0.25",
+    "@cryptostats/sdk": "^0.0.43",
     "next": "latest",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"

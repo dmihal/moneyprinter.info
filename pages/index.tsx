@@ -1,7 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
 import { NextPage, GetStaticProps } from 'next'
-import 'data/adapters'
 import sdk from 'data/sdk'
 import List from 'components/List'
 
@@ -175,8 +174,15 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
   );
 };
 
+/*
+ * Looking for the data source?
+ *
+ * This site pulls data from the CryptoStats protocol
+ * Visit https://cryptostats.community/discover/issuance to see the code for these adapters
+ */
 export const getStaticProps: GetStaticProps = async () => {
   const list = sdk.getList('issuance')
+  await list.fetchAdapters()
   const data = await list.executeQueriesWithMetadata(['issuance7DayAvg'])
 
   return { props: { data }, revalidate: 60 };

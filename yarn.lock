@@ -90,10 +90,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@cryptostats/sdk@^0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@cryptostats/sdk/-/sdk-0.0.25.tgz#db1df60475030e0e3a935c058ffc007b5f2fc465"
-  integrity sha512-Vk2okiABUdFi4b1NiJkHRrTLyBY+yDgvL0SWlAwqqgmjvQuxclblu6x1Fsd/ORVYjmoVkLUbodpJ2CVsjI/ynA==
+"@cryptostats/sdk@^0.0.43":
+  version "0.0.43"
+  resolved "https://registry.yarnpkg.com/@cryptostats/sdk/-/sdk-0.0.43.tgz#f41dc26cbef1c5b0047a260a207f5e7f8a0ccd51"
+  integrity sha512-828zHzybCZ6+NSMLOlpaFtD7Anof3sF3+qDFb20Y2vVawKRxK65pSVUNjc0g2Kg02VTv6A9144X4IKsvFvtQYg==
   dependencies:
     date-fns "^2.22.1"
     ethers "^5.4.4"
