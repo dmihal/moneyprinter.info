@@ -12,10 +12,6 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <title key="title">MoneyPrinter.info</title>
         <link rel="icon" href="/favicon.png" />
         <link href="https://use.typekit.net/jrq0bbf.css" rel="stylesheet" />
-        <link
-          rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/react-datepicker/3.6.0/react-datepicker.min.css"
-        />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&amp;display=swap"
@@ -23,7 +19,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         />
       </Head>
 
-      <PlausibleProvider domain="cryptofees.info">
+      <PlausibleProvider domain="moneyprinter.info">
         <Header />
 
         <Component {...pageProps} />
