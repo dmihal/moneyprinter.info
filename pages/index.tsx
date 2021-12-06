@@ -13,7 +13,7 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
       <h1 className="title">Money Printer</h1>
 
       <p className="description">
-        How much money are crypto protocols printing to subsidize their network?
+        How much money are protocols paying to grow?
       </p>
 
       <p>
