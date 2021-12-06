@@ -2,6 +2,7 @@ import React from 'react'
 import { NextPage, GetStaticProps } from 'next'
 import sdk from 'data/sdk'
 import List from 'components/List'
+import SocialTags from 'components/SocialTags'
 
 interface HomeProps {
   data: any[]
@@ -10,6 +11,8 @@ interface HomeProps {
 export const Home: NextPage<HomeProps> = ({ data }) => {
   return (
     <main>
+      <SocialTags />
+
       <h1 className="title">Money Printer</h1>
 
       <p className="description">
