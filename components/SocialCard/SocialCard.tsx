@@ -6,7 +6,7 @@ interface SocialCardProps {
   date: string;
 }
 
-const sortByWeekly = (a: any, b: any) => b.results.issuance7DayAvg - a.results.issuance7DayAvg
+const sortByWeekly = (a: any, b: any) => b.results.issuance7DayAvgUSD - a.results.issuance7DayAvgUSD
 
 const font = 'SofiaProRegular, Sofia Pro, sofia-pro';
 

@@ -13,7 +13,7 @@ path.resolve(process.cwd(), 'fonts', 'SofiaProRegular.ttf');
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   const list = sdk.getList('issuance')
   await list.fetchAdapters()
-  const data = await list.executeQueriesWithMetadata(['issuance7DayAvg'])
+  const data = await list.executeQueriesWithMetadata(['issuance7DayAvgUSD'])
 
   const svg = ReactDOMServer.renderToString(
     React.createElement(SocialCard, { data, date: sdk.date.formatDate(new Date()) })

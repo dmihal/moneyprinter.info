@@ -45,7 +45,7 @@ const Row: React.FC<RowProps> = ({ protocol, index }) => {
         </text>
 
         <text y="18" x="580" fontFamily={font} fontSize="16" textAnchor="end" fill="#091636">
-          {protocol.results.issuance7DayAvg?.toLocaleString('en-US', {
+          {protocol.results.issuance7DayAvgUSD?.toLocaleString('en-US', {
             style: 'currency',
             currency: 'USD',
           })}
