@@ -20,10 +20,8 @@ const Row: React.FC<RowProps> = ({ protocol }) => {
 
   return (
     <Fragment>
-      <a
-        href={`/protocol/${protocol.id}`}
-        onClick={(e: any) => {
-          e.preventDefault();
+      <div
+        onClick={() => {
           setOpen(toggle);
           plausible('open-details', {
             props: {
@@ -50,7 +48,7 @@ const Row: React.FC<RowProps> = ({ protocol }) => {
           })}
         </div>
         <div className="arrow">{open ? <ChevronUp /> : <ChevronDown />}</div>
-      </a>
+      </div>
 
       <CSSTransition in={open} timeout={500} unmountOnExit>
         <div className="details-container">
