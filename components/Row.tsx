@@ -54,7 +54,7 @@ const Row: React.FC<RowProps> = ({ protocol }) => {
 
       <CSSTransition in={open} timeout={500} unmountOnExit>
         <div className="details-container">
-          <DetailsCard />
+          <DetailsCard metadata={protocol.metadata} />
         </div>
       </CSSTransition>
       <style jsx>{`
