@@ -5,7 +5,7 @@ interface ListProps {
   data: any[]
 }
 
-const sortByWeekly = (a: any, b: any) => b.results.issuance7DayAvg - a.results.issuance7DayAvg
+const sortByWeekly = (a: any, b: any) => b.results.issuance7DayAvgUSD - a.results.issuance7DayAvgUSD
 
 const List: React.FC<ListProps> = ({ data }) => {
   const sortedData = data.sort(sortByWeekly);
@@ -16,6 +16,9 @@ const List: React.FC<ListProps> = ({ data }) => {
         <div className="name">Name</div>
         <div className="amount">
           Daily issuance (USD, 7 day avg)
+        </div>
+        <div className="amount">
+          Issuance Rate (7 day avg)
         </div>
       </div>
 
