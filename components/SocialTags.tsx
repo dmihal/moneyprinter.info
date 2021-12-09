@@ -17,7 +17,7 @@ const SocialTags: React.FC = () => {
       <meta name="twitter:title" content="MoneyPrinter.info" />
       <meta
         name="twitter:description"
-        content="How much money are protocols paying to grow?2?"
+        content="How much money are protocols paying to grow?"
       />
       <meta
         name="twitter:image"
