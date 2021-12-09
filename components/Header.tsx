@@ -10,7 +10,7 @@ const Header = () => {
         <li className="header-link">
           <a href="https://cryptofees.info/">cryptofees.info</a>
         </li>
-        <li className="header-link">
+        <li className="header-link hideable">
           <a href="https://ethburned.info/">ethburned.info</a>
         </li>
         <li className="header-link hideable">
@@ -26,6 +26,9 @@ const Header = () => {
           <a>More</a>
 
           <ul className="dropdown">
+            <li className="header-link showable">
+              <a href="https://ethburned.info/">ethburned.info</a>
+            </li>
             <li className="header-link showable">
               <a href="https://money-movers.info/">money-movers.info</a>
             </li>
