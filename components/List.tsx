@@ -1,24 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Row from './Row';
 
 interface ListProps {
   data: any[]
 }
 
-const sortByWeekly = (a: any, b: any) => b.results.issuance7DayAvgUSD - a.results.issuance7DayAvgUSD
+enum SORT {
+  USD,
+  RATE,
+}
+
+const sortByUSD = (a: any, b: any) => b.results.issuance7DayAvgUSD - a.results.issuance7DayAvgUSD
+const sortByRate = (a: any, b: any) => b.results.issuanceRateCurrent - a.results.issuanceRateCurrent
 
 const List: React.FC<ListProps> = ({ data }) => {
-  const sortedData = data.sort(sortByWeekly);
+  const [sort, setSort] = useState<SORT>(SORT.USD);
+
+  const sortedData = data.sort(sort === SORT.USD ? sortByUSD : sortByRate);
 
   return (
     <div className="list">
       <div className="header">
         <div className="name">Name</div>
-        <div className="amount">
-          Daily issuance (USD, 7 day avg)
+        <div className="amount" onClick={() => setSort(SORT.RATE)}>
+          {sort === SORT.RATE && '▼'} Issuance Rate
         </div>
-        <div className="amount">
-          Issuance Rate (7 day avg)
+        <div className="amount" onClick={() => setSort(SORT.USD)}>
+          {sort === SORT.USD && '▼'} Daily issuance
         </div>
       </div>
 
@@ -95,7 +103,7 @@ const List: React.FC<ListProps> = ({ data }) => {
           .name {
             font-size: 14px;
           }
-          .g {
+          .hide {
             display: none;
           }
 

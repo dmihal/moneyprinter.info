@@ -3,7 +3,7 @@ import React from 'react';
 const Footer: React.FC = () => {
   return (
     <footer>
-      <div>Data updates continuously</div>
+      <div>Data updates continuously, using 7 day average</div>
       <div>
         Powered by <a href="https://cryptostats.community">CryptoStats</a>
       </div>
