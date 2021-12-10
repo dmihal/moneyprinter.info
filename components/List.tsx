@@ -118,6 +118,18 @@ const List: React.FC<ListProps> = ({ data }) => {
             padding: 8px 2px;
           }
         }
+
+        @media (max-width: 500px) {
+          .list {
+            max-width: calc(100vw - 8px);
+          }
+          .header > div {
+            padding: 8px 2px 8px 4px;
+          }
+          .header > div.name {
+            padding-left: 10px;
+          }
+        }
       `}</style>
     </div>
   );

@@ -154,6 +154,23 @@ const Row: React.FC<RowProps> = ({ protocol }) => {
             padding: 0 2px;
           }
         }
+
+        @media (max-width: 500px) {
+          .name {
+            padding-left: 8px;
+          }
+          .item {
+            background-position: 8px 19px;
+          }
+          .amount {
+            min-width: 80px;
+            padding-left: 20px;
+          }
+          .arrow {
+            padding: 0 0 0 4px;
+            height: 20px;
+          }
+        }
       `}</style>
     </Fragment>
   );
