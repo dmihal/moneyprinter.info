@@ -2,7 +2,7 @@ import React from "react";
 import { NextPage, GetStaticProps } from "next";
 import sdk from "data/sdk";
 import List from "components/List";
-import SocialTags from "components/SocialTags";
+// import SocialTags from "components/SocialTags";
 
 interface HomeProps {
   data: any[];
