@@ -16,43 +16,35 @@ const Row: React.FC<RowProps> = ({ protocol }) => {
   const plausible = usePlausible();
   const [open, setOpen] = useState(false);
 
-  const isApp = protocol.metadata.category !== 'l1' && protocol.metadata.category !== 'l2';
+  let isApp = true;
 
   return (
     <Fragment>
       <div
         onClick={() => {
           setOpen(toggle);
-          plausible('open-details', {
+          plausible("open-details", {
             props: {
-              label: protocol.name,
+              label: protocol.results.name,
             },
           });
         }}
-        className={`item ${isApp ? 'app' : ''} ${open ? 'open' : ''}`}
+        className={`item ${isApp ? "app" : ""} ${open ? "open" : ""}`}
         style={{
-          backgroundImage: protocol.metadata.icon ? `url('${protocol.metadata.icon}')` : undefined,
+          backgroundImage: protocol.results.icon
+            ? `url('${protocol.results.icon}')`
+            : undefined,
         }}
       >
-        <div className="name">{protocol.metadata.name}</div>
-        <div className="amount">
-          {(protocol.results.issuanceRateCurrent * 100).toLocaleString('en-US', {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2,
-          })}%
-        </div>
-        <div className="amount">
-          {protocol.results.issuance7DayAvgUSD.toLocaleString('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          })}
-        </div>
+        <div className="name">{protocol.results.name}</div>
+        <div className="amount">{protocol.results.prevVal}</div>
+        <div className="amount">{protocol.results.currVal}</div>
         <div className="arrow">{open ? <ChevronUp /> : <ChevronDown />}</div>
       </div>
 
       <CSSTransition in={open} timeout={500} unmountOnExit>
         <div className="details-container">
-          <DetailsCard metadata={protocol.metadata} />
+          <DetailsCard metadata={protocol.results.metadata} />
         </div>
       </CSSTransition>
       <style jsx>{`
@@ -93,7 +85,7 @@ const Row: React.FC<RowProps> = ({ protocol }) => {
         .amount {
           min-width: 200px;
           text-align: right;
-          font-family: 'Noto Sans TC', sans-serif;
+          font-family: "Noto Sans TC", sans-serif;
         }
 
         .arrow {

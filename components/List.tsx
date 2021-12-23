@@ -5,32 +5,32 @@ interface ListProps {
   data: any[]
 }
 
-enum SORT {
-  USD,
-  RATE,
-}
+// enum SORT {
+//   USD,
+//   RATE,
+// }
 
-const sortByUSD = (a: any, b: any) => b.results.issuance7DayAvgUSD - a.results.issuance7DayAvgUSD
-const sortByRate = (a: any, b: any) => b.results.issuanceRateCurrent - a.results.issuanceRateCurrent
+// const sortByUSD = (a: any, b: any) => b.results.issuance7DayAvgUSD - a.results.issuance7DayAvgUSD
+// const sortByRate = (a: any, b: any) => b.results.issuanceRateCurrent - a.results.issuanceRateCurrent
 
 const List: React.FC<ListProps> = ({ data }) => {
-  const [sort, setSort] = useState<SORT>(SORT.USD);
+  // const [sort, setSort] = useState<SORT>(SORT.USD);
 
-  const sortedData = data.sort(sort === SORT.USD ? sortByUSD : sortByRate);
+  // const sortedData = data.sort(sort === SORT.USD ? sortByUSD : sortByRate);
 
   return (
     <div className="list">
       <div className="header">
         <div className="name">Name</div>
-        <div className="amount" onClick={() => setSort(SORT.RATE)}>
-          {sort === SORT.RATE && '▼'} Issuance Rate
+        <div className="amount">
+          Previous Value
         </div>
-        <div className="amount" onClick={() => setSort(SORT.USD)}>
-          {sort === SORT.USD && '▼'} Daily issuance
+        <div className="amount">
+          Current Value
         </div>
       </div>
 
-      {sortedData.map((protocol: any) => (
+      {data.map((protocol: any) => (
         <Row protocol={protocol} key={protocol.id} />
       ))}
 

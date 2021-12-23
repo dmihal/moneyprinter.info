@@ -6,9 +6,9 @@ const DetailsCard: React.FC<{ metadata: any }> = ({ metadata }) => {
     <div className="details-card">
       <div className="metadata">
         {metadata.description && <div className="description">{metadata.description}</div>}
-        {metadata.issuanceDescription && (
+        {/* {metadata.issuanceDescription && (
           <Attribute title="Issuance Model">{metadata.issuanceDescription}</Attribute>
-        )}
+        )} */}
 
         <div className="row">
           {metadata.website && (
@@ -21,7 +21,7 @@ const DetailsCard: React.FC<{ metadata: any }> = ({ metadata }) => {
           {metadata.blockchain && <Attribute title="Blockchain">{metadata.blockchain}</Attribute>}
         </div>
 
-        {metadata.tokenTicker && (
+        {/* {metadata.tokenTicker && (
           <div className="row">
             <Attribute title="Token">
               <a
@@ -50,7 +50,7 @@ const DetailsCard: React.FC<{ metadata: any }> = ({ metadata }) => {
               {metadata.psRatio?.toFixed(2)}
             </Attribute>
           </div>
-        )}
+        )} */}
 
         <div className="spacer" />
       </div>
