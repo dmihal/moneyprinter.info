@@ -161,6 +161,51 @@ export const getStaticProps: GetStaticProps = async () => {
         prevVal: 2,
       },
     },
+    {
+      id: 6,
+      results: {
+        metadata: {
+          description:
+            "Solana is a decentralized blockchain built to enable scalable, user-friendly apps for the world.",
+          blockchain: "Solana",
+          website: "https://solana.com/",
+        },
+        name: "Solana",
+        icon: "data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDM5Ny43IDMxMS43Ij4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDp1cmwoI1NWR0lEXzFfKTt9Cgkuc3Qxe2ZpbGw6dXJsKCNTVkdJRF8yXyk7fQoJLnN0MntmaWxsOnVybCgjU1ZHSURfM18pO30KPC9zdHlsZT4KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8xXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIzNjAuODc5MSIgeTE9IjM1MS40NTUzIiB4Mj0iMTQxLjIxMyIgeTI9Ii02OS4yOTM2IiBncmFkaWVudFRyYW5zZm9ybT0ibWF0cml4KDEgMCAwIC0xIDAgMzE0KSI+Cgk8c3RvcCBvZmZzZXQ9IjAiIHN0eWxlPSJzdG9wLWNvbG9yOiMwMEZGQTMiLz4KCTxzdG9wIG9mZnNldD0iMSIgc3R5bGU9InN0b3AtY29sb3I6I0RDMUZGRiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNNjQuNiwyMzcuOWMyLjQtMi40LDUuNy0zLjgsOS4yLTMuOGgzMTcuNGM1LjgsMCw4LjcsNyw0LjYsMTEuMWwtNjIuNyw2Mi43Yy0yLjQsMi40LTUuNywzLjgtOS4yLDMuOEg2LjUKCWMtNS44LDAtOC43LTctNC42LTExLjFMNjQuNiwyMzcuOXoiLz4KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8yXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIyNjQuODI5MSIgeTE9IjQwMS42MDE0IiB4Mj0iNDUuMTYzIiB5Mj0iLTE5LjE0NzUiIGdyYWRpZW50VHJhbnNmb3JtPSJtYXRyaXgoMSAwIDAgLTEgMCAzMTQpIj4KCTxzdG9wIG9mZnNldD0iMCIgc3R5bGU9InN0b3AtY29sb3I6IzAwRkZBMyIvPgoJPHN0b3Agb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojREMxRkZGIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik02NC42LDMuOEM2Ny4xLDEuNCw3MC40LDAsNzMuOCwwaDMxNy40YzUuOCwwLDguNyw3LDQuNiwxMS4xbC02Mi43LDYyLjdjLTIuNCwyLjQtNS43LDMuOC05LjIsMy44SDYuNQoJYy01LjgsMC04LjctNy00LjYtMTEuMUw2NC42LDMuOHoiLz4KPGxpbmVhckdyYWRpZW50IGlkPSJTVkdJRF8zXyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIzMTIuNTQ4NCIgeTE9IjM3Ni42ODgiIHgyPSI5Mi44ODIyIiB5Mj0iLTQ0LjA2MSIgZ3JhZGllbnRUcmFuc2Zvcm09Im1hdHJpeCgxIDAgMCAtMSAwIDMxNCkiPgoJPHN0b3Agb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojMDBGRkEzIi8+Cgk8c3RvcCBvZmZzZXQ9IjEiIHN0eWxlPSJzdG9wLWNvbG9yOiNEQzFGRkYiLz4KPC9saW5lYXJHcmFkaWVudD4KPHBhdGggY2xhc3M9InN0MiIgZD0iTTMzMy4xLDEyMC4xYy0yLjQtMi40LTUuNy0zLjgtOS4yLTMuOEg2LjVjLTUuOCwwLTguNyw3LTQuNiwxMS4xbDYyLjcsNjIuN2MyLjQsMi40LDUuNywzLjgsOS4yLDMuOGgzMTcuNAoJYzUuOCwwLDguNy03LDQuNi0xMS4xTDMzMy4xLDEyMC4xeiIvPgo8L3N2Zz4K",
+        currVal: 19,
+        prevVal: 19,
+      },
+    },
+    {
+      id: 7,
+      results: {
+        metadata: {
+          description:
+            "Avalanche is an open, programmable smart contracts platform for decentralized applications.",
+          blockchain: "Avalanche",
+          website: "https://www.avax.network/",
+        },
+        name: "Avalanche",
+        icon: " data:image/png;base64,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",
+        currVal: 24,
+        prevVal: 24,
+      },
+    },
+    // {
+    //   id: 8,
+    //   results: {
+    //     metadata: {
+    //       description:
+    //         "",
+    //       blockchain: "Avalanche",
+    //       website: "https://polygon.technology/",
+    //     },
+    //     name: "",
+    //     icon: "",
+    //     currVal: 6,
+    //     prevVal: 6,
+    //   },
+    // },
   ];
   // const data = await list.executeQueriesWithMetadata(['issuance7DayAvgUSD', 'issuanceRateCurrent'])
 
