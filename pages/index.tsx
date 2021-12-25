@@ -1,7 +1,7 @@
 import React from "react";
 import { NextPage, GetStaticProps } from "next";
 import List from "components/List";
-import CHAIN_DATA from "./constants";
+import CHAIN_DATA from "../components/constants";
 // import axios from "axios";
 
 interface HomeProps {
