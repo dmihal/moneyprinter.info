@@ -176,6 +176,16 @@ export const getStaticProps: GetStaticProps = async () => {
         prevVal: 3,
       },
     },
+    {
+      id: 10,
+      results: {
+        metadata: CHAIN_DATA.get("RUNE").metadata,
+        name: CHAIN_DATA.get("RUNE").name,
+        icon: CHAIN_DATA.get("RUNE").icon,
+        currVal: 12,
+        prevVal: 10,
+      },
+    },
   ];
 
   return { props: { data }, revalidate: 60 };

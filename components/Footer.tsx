@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Footer: React.FC = () => {
   return (
@@ -20,7 +20,11 @@ const Footer: React.FC = () => {
       </div>
 
       <div>
-        <b>Adapted from <a href="https://moneyprinter.info">moneyprinter.info</a> with permission</b>
+        <b>
+          Adapted from{" "}
+          <a href="https://github.com/dmihal/moneyprinter.info">moneyprinter.info</a>{" "}
+          with permission
+        </b>
         {/* {" | "}
         <a href="https://cryptofees.info">cryptofees.info</a>
         {" | "}
