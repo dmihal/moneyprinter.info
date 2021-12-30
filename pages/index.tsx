@@ -2,7 +2,7 @@ import React from "react";
 import { NextPage, GetStaticProps } from "next";
 import List from "components/List";
 import CHAIN_DATA from "../components/constants";
-// import axios from "axios";
+import axios from "axios";
 
 interface HomeProps {
   data: any[];
@@ -68,126 +68,127 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
   );
 };
 
-// NOTE: ONCE THE SERVER CODE IS DEPLOYED, COMMENT THE UNCOMMENTED CODE
-// AND UNCOMMENT THE COMMENTED ONE. ALSO UNCOMMENT "import axios from 'axios'"
+// This is sample data to populate the webpage when server is not available
+// const data = [
+//   {
+//     id: 1,
+//     results: {
+//       metadata: CHAIN_DATA.get("ATOM").metadata,
+//       name: CHAIN_DATA.get("ATOM").name,
+//       icon: CHAIN_DATA.get("ATOM").icon,
+//       currVal: 7,
+//       prevVal: 7,
+//     },
+//   },
+//   {
+//     id: 2,
+//     results: {
+//       metadata: CHAIN_DATA.get("BNB").metadata,
+//       name: CHAIN_DATA.get("BNB").name,
+//       icon: CHAIN_DATA.get("BNB").icon,
+//       currVal: 7,
+//       prevVal: 7,
+//     },
+//   },
+//   {
+//     id: 3,
+//     results: {
+//       metadata: CHAIN_DATA.get("MINA").metadata,
+//       name: CHAIN_DATA.get("MINA").name,
+//       icon: CHAIN_DATA.get("MINA").icon,
+//       currVal: 11,
+//       prevVal: 11,
+//     },
+//   },
+//   {
+//     id: 4,
+//     results: {
+//       metadata: CHAIN_DATA.get("OSMO").metadata,
+//       name: CHAIN_DATA.get("OSMO").name,
+//       icon: CHAIN_DATA.get("OSMO").icon,
+//       currVal: 4,
+//       prevVal: 4,
+//     },
+//   },
+//   {
+//     id: 5,
+//     results: {
+//       metadata: CHAIN_DATA.get("MATIC").metadata,
+//       name: CHAIN_DATA.get("MATIC").name,
+//       icon: CHAIN_DATA.get("MATIC").icon,
+//       currVal: 2,
+//       prevVal: 2,
+//     },
+//   },
+//   {
+//     id: 6,
+//     results: {
+//       metadata: CHAIN_DATA.get("SOL").metadata,
+//       name: CHAIN_DATA.get("SOL").name,
+//       icon: CHAIN_DATA.get("SOL").icon,
+//       currVal: 19,
+//       prevVal: 19,
+//     },
+//   },
+//   {
+//     id: 7,
+//     results: {
+//       metadata: CHAIN_DATA.get("AVAX").metadata,
+//       name: CHAIN_DATA.get("AVAX").name,
+//       icon: CHAIN_DATA.get("AVAX").icon,
+//       currVal: 24,
+//       prevVal: 24,
+//     },
+//   },
+//   {
+//     id: 8,
+//     results: {
+//       metadata: CHAIN_DATA.get("LUNA").metadata,
+//       name: CHAIN_DATA.get("LUNA").name,
+//       icon: CHAIN_DATA.get("LUNA").icon,
+//       currVal: 7,
+//       prevVal: 7,
+//     },
+//   },
+//   {
+//     id: 9,
+//     results: {
+//       metadata: CHAIN_DATA.get("GRT").metadata,
+//       name: CHAIN_DATA.get("GRT").name,
+//       icon: CHAIN_DATA.get("GRT").icon,
+//       currVal: 3,
+//       prevVal: 3,
+//     },
+//   },
+//   {
+//     id: 10,
+//     results: {
+//       metadata: CHAIN_DATA.get("RUNE").metadata,
+//       name: CHAIN_DATA.get("RUNE").name,
+//       icon: CHAIN_DATA.get("RUNE").icon,
+//       currVal: 12,
+//       prevVal: 10,
+//     },
+//   },
+// ];
+
 export const getStaticProps: GetStaticProps = async () => {
-  // let resp = await axios.get("http://localhost:8080/nakamoto-coefficients");
-  // let data = resp.data.coefficients.map((chain, indx) => {
-  //   return {
-  //     id: indx+1,
-  //     results: {
-  //       metadata: CHAIN_DATA.get(chain.chain_token).metadata,
-  //       name: CHAIN_DATA.get(chain.chain_token).name,
-  //       icon: CHAIN_DATA.get(chain.chain_token).icon,
-  //       currVal: chain.naka_co_curr_val,
-  //       prevVal: chain.naka_co_prev_val,
-  //     }
-  //   }
-  // });
-
-  const data = [
-    {
-      id: 1,
+  // NOTE: Set the below URL to the IP address where the server code is deployed
+  let resp = await axios.get(
+    "http://168.119.165.122:8080/nakamoto-coefficients"
+  );
+  let data = resp.data.coefficients.map((chain: any, indx: number) => {
+    return {
+      id: indx + 1,
       results: {
-        metadata: CHAIN_DATA.get("ATOM").metadata,
-        name: CHAIN_DATA.get("ATOM").name,
-        icon: CHAIN_DATA.get("ATOM").icon,
-        currVal: 7,
-        prevVal: 7,
+        metadata: CHAIN_DATA.get(chain.chain_token).metadata,
+        name: CHAIN_DATA.get(chain.chain_token).name,
+        icon: CHAIN_DATA.get(chain.chain_token).icon,
+        currVal: chain.naka_co_curr_val,
+        prevVal: chain.naka_co_prev_val,
       },
-    },
-    {
-      id: 2,
-      results: {
-        metadata: CHAIN_DATA.get("BNB").metadata,
-        name: CHAIN_DATA.get("BNB").name,
-        icon: CHAIN_DATA.get("BNB").icon,
-        currVal: 7,
-        prevVal: 7,
-      },
-    },
-    {
-      id: 3,
-      results: {
-        metadata: CHAIN_DATA.get("MINA").metadata,
-        name: CHAIN_DATA.get("MINA").name,
-        icon: CHAIN_DATA.get("MINA").icon,
-        currVal: 11,
-        prevVal: 11,
-      },
-    },
-    {
-      id: 4,
-      results: {
-        metadata: CHAIN_DATA.get("OSMO").metadata,
-        name: CHAIN_DATA.get("OSMO").name,
-        icon: CHAIN_DATA.get("OSMO").icon,
-        currVal: 4,
-        prevVal: 4,
-      },
-    },
-    {
-      id: 5,
-      results: {
-        metadata: CHAIN_DATA.get("MATIC").metadata,
-        name: CHAIN_DATA.get("MATIC").name,
-        icon: CHAIN_DATA.get("MATIC").icon,
-        currVal: 2,
-        prevVal: 2,
-      },
-    },
-    {
-      id: 6,
-      results: {
-        metadata: CHAIN_DATA.get("SOL").metadata,
-        name: CHAIN_DATA.get("SOL").name,
-        icon: CHAIN_DATA.get("SOL").icon,
-        currVal: 19,
-        prevVal: 19,
-      },
-    },
-    {
-      id: 7,
-      results: {
-        metadata: CHAIN_DATA.get("AVAX").metadata,
-        name: CHAIN_DATA.get("AVAX").name,
-        icon: CHAIN_DATA.get("AVAX").icon,
-        currVal: 24,
-        prevVal: 24,
-      },
-    },
-    {
-      id: 8,
-      results: {
-        metadata: CHAIN_DATA.get("LUNA").metadata,
-        name: CHAIN_DATA.get("LUNA").name,
-        icon: CHAIN_DATA.get("LUNA").icon,
-        currVal: 7,
-        prevVal: 7,
-      },
-    },
-    {
-      id: 9,
-      results: {
-        metadata: CHAIN_DATA.get("GRT").metadata,
-        name: CHAIN_DATA.get("GRT").name,
-        icon: CHAIN_DATA.get("GRT").icon,
-        currVal: 3,
-        prevVal: 3,
-      },
-    },
-    {
-      id: 10,
-      results: {
-        metadata: CHAIN_DATA.get("RUNE").metadata,
-        name: CHAIN_DATA.get("RUNE").name,
-        icon: CHAIN_DATA.get("RUNE").icon,
-        currVal: 12,
-        prevVal: 10,
-      },
-    },
-  ];
-
+    };
+  });
   return { props: { data }, revalidate: 60 };
 };
 
