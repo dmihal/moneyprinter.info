@@ -1,8 +1,8 @@
-import React from 'react'
-import Row from './Row';
+import React from "react";
+import Row from "./Row";
 
 interface ListProps {
-  data: any[]
+  data: any[];
 }
 
 // enum SORT {
@@ -22,12 +22,8 @@ const List: React.FC<ListProps> = ({ data }) => {
     <div className="list">
       <div className="header">
         <div className="name">Name</div>
-        <div className="amount">
-          Previous Value
-        </div>
-        <div className="amount">
-          Current Value
-        </div>
+        <div className="amount">Previous Value</div>
+        <div className="amount">Current Value</div>
       </div>
 
       {data.map((protocol: any) => (
