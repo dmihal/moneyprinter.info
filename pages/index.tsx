@@ -173,10 +173,7 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
 // ];
 
 export const getStaticProps: GetStaticProps = async () => {
-  // NOTE: Set the below URL to the IP address where the server code is deployed
-  let resp = await axios.get(
-    "http://168.119.165.122:8080/nakamoto-coefficients"
-  );
+  let resp = await axios.get("http://localhost:8080/nakamoto-coefficients");
   let data = resp.data.coefficients.map((chain: any, indx: number) => {
     return {
       id: indx + 1,
