@@ -77,9 +77,10 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
  * Visit https://cryptostats.community/discover/issuance to see the code for these adapters
  */
 export const getStaticProps: GetStaticProps = async () => {
-  const list = sdk.getList('issuance')
+  const list = sdk.getCollection('issuance')
   await list.fetchAdapters()
-  const data = await list.executeQueriesWithMetadata(['issuance7DayAvgUSD', 'issuanceRateCurrent'])
+  let data = await list.executeQueriesWithMetadata(['issuance7DayAvgUSD', 'issuanceRateCurrent'])
+  data = data.filter(val => val.results.issuance7DayAvgUSD && val.results.issuanceRateCurrent)
 
   return { props: { data }, revalidate: 60 };
 };
