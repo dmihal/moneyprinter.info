@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import PlausibleProvider from 'next-plausible';
-import Header from 'components/Header';
+import { Header } from '@cryptostats/header.header';
 import Footer from 'components/Footer';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
@@ -20,7 +20,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
       </Head>
 
       <PlausibleProvider domain="moneyprinter.info">
-        <Header />
+        <Header siteName='moneyprinter.info'/>
 
         <Component {...pageProps} />
 
