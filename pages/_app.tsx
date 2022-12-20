@@ -4,6 +4,7 @@ import type { AppProps } from 'next/app';
 import PlausibleProvider from 'next-plausible';
 import { Header } from '@cryptostats/header.header';
 import Footer from 'components/Footer';
+import { Sponsor } from '@cryptostats/header.sponsor_cta';
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -23,7 +24,7 @@ const App: React.FC<AppProps> = ({ Component, pageProps }) => {
         <Header siteName='moneyprinter.info'/>
 
         <Component {...pageProps} />
-
+        <Sponsor/>
         <Footer />
       </PlausibleProvider>
 
