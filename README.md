@@ -2,6 +2,14 @@
 
 This is a really simple project that shows the usage of Next.js with TypeScript.
 
+## Steps to run the project:
+1. Ensure that the [nakamoto-coefficient server](https://github.com/xenowits/nakomoto-coefficient-calculator) is running on port 8080.
+2. Build and start the frontend by running the following commands:
+```shell
+npm run build
+npm run start
+```
+
 ## Deploy your own
 
 Deploy the example using [Vercel](https://vercel.com):
