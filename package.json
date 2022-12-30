@@ -8,24 +8,25 @@
     "type-check": "tsc"
   },
   "dependencies": {
+    "swr": "2.0.0",
     "@popperjs/core": "^2.11.0",
     "axios": "^0.24.0",
-    "next": "^12.0.7",
-    "next-plausible": "^3.1.4",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-feather": "^2.0.9",
-    "react-popper": "^2.2.5",
-    "react-transition-group": "^4.4.2",
-    "sharp": "^0.29.3"
+    "next": "13.1.1",
+    "next-plausible": "3.6.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-feather": "2.0.10",
+    "react-popper": "2.3.0",
+    "react-transition-group": "4.4.5",
+    "sharp": "0.31.3"
   },
   "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^16.9.16",
-    "@types/react-dom": "^16.9.4",
+    "@types/node": "18.11.18",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.10",
     "@types/react-transition-group": "^4.4.4",
-    "@types/sharp": "^0.29.4",
-    "typescript": "4.0"
+    "@types/sharp": "0.31.0",
+    "typescript": "4.9.4"
   },
   "license": "MIT"
 }

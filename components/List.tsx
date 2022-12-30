@@ -5,19 +5,7 @@ interface ListProps {
   data: any[];
 }
 
-// enum SORT {
-//   USD,
-//   RATE,
-// }
-
-// const sortByUSD = (a: any, b: any) => b.results.issuance7DayAvgUSD - a.results.issuance7DayAvgUSD
-// const sortByRate = (a: any, b: any) => b.results.issuanceRateCurrent - a.results.issuanceRateCurrent
-
 const List: React.FC<ListProps> = ({ data }) => {
-  // const [sort, setSort] = useState<SORT>(SORT.USD);
-
-  // const sortedData = data.sort(sort === SORT.USD ? sortByUSD : sortByRate);
-
   return (
     <div className="list">
       <div className="header">

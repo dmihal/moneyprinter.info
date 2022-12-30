@@ -5,4 +5,6 @@ module.exports = withPlausibleProxy({
   // generation before timing out
   staticPageGenerationTimeout: 1000,
   // customDomain: "https://analytics.cryptostats.community",
-})({});
+})({
+  output: "standalone",
+});

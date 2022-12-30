@@ -135,6 +135,7 @@ CHAIN_DATA.set("XNO", {
   metadata: {
     description:
       "Nano is a digital currency for everyone, without fees.",
+    blockchain: "Nano",
     website: "https://nano.org/",
   },
   name: "Nano",

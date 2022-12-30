@@ -1,19 +1,54 @@
 import React from "react";
-import { NextPage, GetStaticProps } from "next";
 import List from "components/List";
 import CHAIN_DATA from "../components/constants";
-import axios from "axios";
+import useSWR from "swr";
 
-interface HomeProps {
-  data: any[];
-}
+const fetcher = (url: string) => fetch(url).then(async (res) => {
+    let r = await res.json()
+    return r.coefficients.map((chain: any, indx: number) => {
+        return {
+            id: indx + 1,
+            results: {
+                metadata: CHAIN_DATA.get(chain.chain_token).metadata,
+                name: CHAIN_DATA.get(chain.chain_token).name,
+                icon: CHAIN_DATA.get(chain.chain_token).icon,
+                currVal: chain.naka_co_curr_val,
+                prevVal: chain.naka_co_prev_val,
+            },
+        };
+    });
+});
 
-export const Home: NextPage<HomeProps> = ({ data }) => {
+export const Home: () => JSX.Element = () => {
+    const { data, error } = useSWR(
+        "http://localhost:8080/nakamoto-coefficients",
+        fetcher
+    );
+
+    if (error) {
+        return (
+            <div>
+                <h1 className="title">An error has occurred</h1>
+                <p className="contentTitle">Ping me on <a href="https://twitter.com/xenowits">twitter</a>. I will try to look into it.</p>
+            </div>
+        );
+    }
+
+    if (!data) return (
+        <div>
+            <h1 className="description">Loading...</h1>
+            <h2>Seems like server didn't send any data 🤔</h2>
+            <p className="contentTitle">Ping me on <a href="https://twitter.com/xenowits">twitter</a>. I will try to look into it.</p>
+        </div>
+    );
   return (
     <main>
       {/* <SocialTags /> */}
         <h1 className="title">Nakamoto Coefficients</h1>
         <p className="description">A measure of decentralization</p>
+        {/*<p className="title">*/}
+        {/*    This site is under maintenance. Please check after some time.*/}
+        {/*</p>*/}
         <p className="content">Please see below for the real-time Nakamoto Coefficient for a curated selection of the leading Proof-of-Stake Networks.</p>
         {/* <p>
         Like this site?{' '}
@@ -132,127 +167,6 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
       `}</style>
     </main>
   );
-};
-
-// This is sample data to populate the webpage when server is not available
-// const data = [
-//   {
-//     id: 1,
-//     results: {
-//       metadata: CHAIN_DATA.get("ATOM").metadata,
-//       name: CHAIN_DATA.get("ATOM").name,
-//       icon: CHAIN_DATA.get("ATOM").icon,
-//       currVal: 7,
-//       prevVal: 7,
-//     },
-//   },
-//   {
-//     id: 2,
-//     results: {
-//       metadata: CHAIN_DATA.get("BNB").metadata,
-//       name: CHAIN_DATA.get("BNB").name,
-//       icon: CHAIN_DATA.get("BNB").icon,
-//       currVal: 7,
-//       prevVal: 7,
-//     },
-//   },
-//   {
-//     id: 3,
-//     results: {
-//       metadata: CHAIN_DATA.get("MINA").metadata,
-//       name: CHAIN_DATA.get("MINA").name,
-//       icon: CHAIN_DATA.get("MINA").icon,
-//       currVal: 11,
-//       prevVal: 11,
-//     },
-//   },
-//   {
-//     id: 4,
-//     results: {
-//       metadata: CHAIN_DATA.get("OSMO").metadata,
-//       name: CHAIN_DATA.get("OSMO").name,
-//       icon: CHAIN_DATA.get("OSMO").icon,
-//       currVal: 4,
-//       prevVal: 4,
-//     },
-//   },
-//   {
-//     id: 5,
-//     results: {
-//       metadata: CHAIN_DATA.get("MATIC").metadata,
-//       name: CHAIN_DATA.get("MATIC").name,
-//       icon: CHAIN_DATA.get("MATIC").icon,
-//       currVal: 2,
-//       prevVal: 2,
-//     },
-//   },
-//   {
-//     id: 6,
-//     results: {
-//       metadata: CHAIN_DATA.get("SOL").metadata,
-//       name: CHAIN_DATA.get("SOL").name,
-//       icon: CHAIN_DATA.get("SOL").icon,
-//       currVal: 19,
-//       prevVal: 19,
-//     },
-//   },
-//   {
-//     id: 7,
-//     results: {
-//       metadata: CHAIN_DATA.get("AVAX").metadata,
-//       name: CHAIN_DATA.get("AVAX").name,
-//       icon: CHAIN_DATA.get("AVAX").icon,
-//       currVal: 24,
-//       prevVal: 24,
-//     },
-//   },
-//   {
-//     id: 8,
-//     results: {
-//       metadata: CHAIN_DATA.get("LUNA").metadata,
-//       name: CHAIN_DATA.get("LUNA").name,
-//       icon: CHAIN_DATA.get("LUNA").icon,
-//       currVal: 7,
-//       prevVal: 7,
-//     },
-//   },
-//   {
-//     id: 9,
-//     results: {
-//       metadata: CHAIN_DATA.get("GRT").metadata,
-//       name: CHAIN_DATA.get("GRT").name,
-//       icon: CHAIN_DATA.get("GRT").icon,
-//       currVal: 3,
-//       prevVal: 3,
-//     },
-//   },
-//   {
-//     id: 10,
-//     results: {
-//       metadata: CHAIN_DATA.get("RUNE").metadata,
-//       name: CHAIN_DATA.get("RUNE").name,
-//       icon: CHAIN_DATA.get("RUNE").icon,
-//       currVal: 12,
-//       prevVal: 10,
-//     },
-//   },
-// ];
-
-export const getStaticProps: GetStaticProps = async () => {
-  let resp = await axios.get("http://localhost:8080/nakamoto-coefficients");
-  let data = resp.data.coefficients.map((chain: any, indx: number) => {
-    return {
-      id: indx + 1,
-      results: {
-        metadata: CHAIN_DATA.get(chain.chain_token).metadata,
-        name: CHAIN_DATA.get(chain.chain_token).name,
-        icon: CHAIN_DATA.get(chain.chain_token).icon,
-        currVal: chain.naka_co_curr_val,
-        prevVal: chain.naka_co_prev_val,
-      },
-    };
-  });
-  return { props: { data }, revalidate: 60 };
 };
 
 export default Home;

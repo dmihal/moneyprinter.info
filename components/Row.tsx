@@ -37,8 +37,8 @@ const Row: React.FC<RowProps> = ({ protocol }) => {
         }}
       >
         <div className="name">{protocol.results.name}</div>
-        <div className="amount">{protocol.results.prevVal}</div>
-        <div className="amount">{protocol.results.currVal}</div>
+        <div className="amount">{protocol.results.prevVal == undefined ? 0: protocol.results.prevVal}</div>
+        <div className="amount">{protocol.results.currVal == undefined ? 0: protocol.results.currVal}</div>
         <div className="arrow">{open ? <ChevronUp /> : <ChevronDown />}</div>
       </div>
 

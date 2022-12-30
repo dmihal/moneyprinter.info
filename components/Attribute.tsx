@@ -3,6 +3,7 @@ import { usePopper } from 'react-popper';
 
 interface AttributeProps {
   title: string;
+  children: any;
   tooltip?: string;
 }
 

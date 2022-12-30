@@ -9,7 +9,22 @@ This is a really simple project that shows the usage of Next.js with TypeScript.
 npm run build
 npm run start
 ```
+3. Or, if you want to debug, simply run `npm run dev`.
 
+### Docker image
+1. Build docker image
+```shell
+ docker build . --platform=linux/amd64 -t xenowits/nakamoto-coefficient-frontend:v0.1.0
+```
+2. Push to github container registry
+```shell
+docker push xenowits/nakamoto-coefficient-frontend:v0.1.0
+```
+3. Run docker image
+```shell
+docker run -p 3000:3000 xenowits/nakamoto-coefficient-frontend:v0.1.0
+```
+4. Docker images are available [here](https://hub.docker.com/r/xenowits/nakamoto-coefficient-frontend/tags).
 ## Deploy your own
 
 Deploy the example using [Vercel](https://vercel.com):
