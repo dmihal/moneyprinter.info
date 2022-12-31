@@ -20,12 +20,20 @@ const fetcher = (url: string) => fetch(url).then(async (res) => {
 });
 
 export const Home: () => JSX.Element = () => {
+    // TODO(xenowits): Set the API_URL dynamically using env variable. Since, I'm not a frontend expert
+    // (I'm a go backend engineer), I will need help from nextjs legends to figure this out. I'm doing this
+    // on a holiday (31st Dec, 2022) and it's not working, so I'm just setting it as is, and heading out
+    // to enjoy this time with my friends and family. Here's a link I found that makes me think env vars are tricky:
+    // https://www.saltycrane.com/blog/2021/04/buildtime-vs-runtime-environment-variables-nextjs-docker/
+    // PS: This is the nakaflow server address.
+    let url = "http://168.119.165.122:8080/nakamoto-coefficients"
     const { data, error } = useSWR(
-        "http://localhost:8080/nakamoto-coefficients",
+        url,
         fetcher
     );
 
     if (error) {
+        console.log("error is", error)
         return (
             <div>
                 <h1 className="title">An error has occurred</h1>
@@ -41,6 +49,7 @@ export const Home: () => JSX.Element = () => {
             <p className="contentTitle">Ping me on <a href="https://twitter.com/xenowits">twitter</a>. I will try to look into it.</p>
         </div>
     );
+
   return (
     <main>
       {/* <SocialTags /> */}

@@ -3,11 +3,11 @@ import React from 'react';
 const Header = () => {
   return (
     <header>
-      <ul className="header-links">
-        <li className="header-link">
-          <div><a href="https://chainflow.io">Chainflow.io</a></div>
-        </li>
-      </ul>
+      {/*<ul className="header-links">*/}
+      {/*  <li className="header-link">*/}
+      {/*    <div><a href="https://chainflow.io">Chainflow.io</a></div>*/}
+      {/*  </li>*/}
+      {/*</ul>*/}
 
       <style jsx>{`
         .header-links {

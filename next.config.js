@@ -7,4 +7,7 @@ module.exports = withPlausibleProxy({
   // customDomain: "https://analytics.cryptostats.community",
 })({
   output: "standalone",
+  publicRuntimeConfig: {
+    NEXT_PUBLIC_SERVER_URL: process.env.NEXT_PUBLIC_SERVER_URL,
+  }
 });

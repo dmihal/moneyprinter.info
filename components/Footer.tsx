@@ -3,7 +3,7 @@ import React from "react";
 const Footer: React.FC = () => {
   return (
     <footer>
-      <div>Data is refreshed every 24 hours</div>
+      <div>Data is refreshed every 6 hours</div>
       <div>
         Sponsored by <a href="https://chainflow.io">Chainflow</a>
       </div>
