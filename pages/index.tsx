@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let data = await list.executeQueriesWithMetadata(['issuance7DayAvgUSD', 'issuanceRateCurrent'])
   data = data.filter(val => val.results.issuance7DayAvgUSD && val.results.issuanceRateCurrent)
 
-  return { props: { data }, revalidate: 60 };
+  return { props: { data }, revalidate: 60 * 15 };
 };
 
 export default Home;

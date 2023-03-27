@@ -5,6 +5,7 @@ import { CryptoStatsSDK } from '@cryptostats/sdk'
 // }
 
 const sdk = new CryptoStatsSDK({
+  mongoConnectionString: process.env.MONGO_CONNECTION_STRING,
   // moralisKey: process.env.MORALIS_KEY,
 })
 
@@ -14,5 +15,16 @@ if (process.env.ALCHEMY_ETH_KEY) {
 } else {
   console.error('Alchemy key not set')
 }
+const CACHED_QUERIES = [
+  'issuance7DayAvgUSD',
+  'issuanceRateCurrent',
+];
+
+// Hourly caches
+sdk
+  .getCollection('issuance')
+  .setCacheKeyResolver((_id: string, query: string, _params: string[]) =>
+    CACHED_QUERIES.includes(query) ? Math.floor(Date.now() / 1000 / 60 / 60).toString() : null
+  );
 
 export default sdk
