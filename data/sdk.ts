@@ -7,6 +7,7 @@ import { CryptoStatsSDK } from '@cryptostats/sdk'
 const sdk = new CryptoStatsSDK({
   mongoConnectionString: process.env.MONGO_CONNECTION_STRING,
   // moralisKey: process.env.MORALIS_KEY,
+  executionTimeout: 60,
 })
 
 if (process.env.ALCHEMY_ETH_KEY) {
