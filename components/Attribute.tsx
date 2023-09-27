@@ -1,12 +1,13 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, ReactNode } from 'react';
 import { usePopper } from 'react-popper';
 
 interface AttributeProps {
-  title: string;
-  tooltip?: string;
+  title: string
+  tooltip?: string
+  children: ReactNode
 }
 
-const Attribute: React.FC<AttributeProps> = ({ title, children, tooltip }) => {
+export default function Attribute({ title, children, tooltip }: AttributeProps) {
   const [showTooltip, setShowTooltip] = useState(false);
   const target = useRef(null);
   const tooltipEl = useRef(null);
@@ -92,4 +93,3 @@ const Attribute: React.FC<AttributeProps> = ({ title, children, tooltip }) => {
   );
 };
 
-export default Attribute;

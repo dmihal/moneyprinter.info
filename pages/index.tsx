@@ -24,17 +24,6 @@ export const Home: NextPage<HomeProps> = ({ data }) => {
         <a href="https://gitcoin.co/grants/1624/cryptofees-info">Support it on Gitcoin Grants</a>
       </p>
 
-      <div>
-        <a
-          href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-          className="twitter-share-button"
-          data-show-count="true"
-        >
-          Tweet
-        </a>
-        <script async src="https://platform.twitter.com/widgets.js"></script>
-      </div>
-
       <List data={data} />
 
       <style jsx>{`
