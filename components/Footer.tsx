@@ -25,9 +25,9 @@ const Footer: React.FC = () => {
         {' | '}
         <a href="https://l2fees.info">l2fees.info</a>
         {' | '}
-        <a href="https://moneymovers.info">moneymovers.info</a>
+        <a href="https://money-movers.info">money-movers.info</a>
         {' | '}
-        <a href="https://open-orgs.info">open-orgs.info</a>
+        <a href="https://openorgs.info">openorgs.info</a>
       </div>
 
       <style jsx>{`
